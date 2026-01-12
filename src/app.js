@@ -1,10 +1,24 @@
 import AOS from "aos";
+import "./toast"
 
 // Initialize AOS
 AOS.init();
 
-// This code converted from JQuery to JS vanilla using chatGPT
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Cloudflare Turnstile
+  let turnstileWidgetId;
+  if (typeof turnstile !== "undefined") {
+    turnstileWidgetId = turnstile.render("#cfTurnstile", {
+      sitekey: "0x4AAAAAACLUZydBc06cgvda",
+      language: "en",
+      theme: "light",
+      // "error-callback": function (errorCode) {
+      //   console.log("Turnstile error handled:", errorCode);
+      //   return true; // suppress console warnings
+      // }
+    });
+  }
+  // Theme toggles and sidebar handling
   const root = document.documentElement;
   const themeKey = "hs_theme";
   const btnDark = document.getElementById("btnDark");
@@ -12,9 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const drawerToggle = document.getElementById("drawerToggle");
   const sidebar = document.querySelector("aside");
   const drawerToggleIcon = document.querySelector('label[for="drawerToggle"]');
+  // Back to top button
   const backToTop = document.getElementById("backToTop");
   const showAfter = 200;
 
+  // Apply theme based on mode
   const applyTheme = (mode, persist = true) => {
     const isDark = mode === "dark";
     root.classList.toggle("dark", isDark);
@@ -160,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const res = await response.json();
 
-      const fields = ["name", "email", "subject", "message"];
+      const fields = ["name", "email", "subject", "message", 'cf-turnstile-response'];
       if (res.errors) {
         fields.forEach((f) => {
           const err = form.querySelector(`.${f}-field .validation-err`);
@@ -189,6 +205,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => alertMsg?.classList.add("hidden"), 5000);
         form.reset();
+        if (typeof turnstile !== "undefined" && turnstileWidgetId !== undefined) {
+          turnstile.reset(turnstileWidgetId);
+        }
       } else {
         const alertMsg = document.querySelector(".alert-msg");
         document.querySelectorAll(".validation-err").forEach((el) =>
@@ -227,187 +246,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-// // Hide the sidebar when clicking outside it
-// $(() => {
-//   const $root = document.documentElement;
-//   const $THEME_KEY = 'hs_theme';
-//   const $btnDark = $('#btnDark');   // click -> switch to dark
-//   const $btnLight = $('#btnLight');  // click -> switch to light
-//   const $drawerToggle = $("#drawerToggle");
-//   const $sidebar = $("aside");
-//   const $drawerToggleIcon = $('label[for="drawerToggle"]');
-//   const $backToTop = $('#backToTop');
-//   const $SHOW_AFTER = 200; // px scrolled down before showing button
-
-//   const applyTheme = ($mode, $persist = true) => {
-//     const $isDark = $mode === 'dark';
-//     $($root).toggleClass('dark', $isDark);
-//     $($btnDark).toggleClass('hidden', $isDark);
-//     $($btnLight).toggleClass('hidden', !$isDark);
-//     if ($persist) localStorage.setItem($THEME_KEY, $mode);
-//   }
-
-//   // Initial: sync buttons to current class (head script already set the class)
-//   const $isDarkNow = $($root).hasClass('dark');
-//   applyTheme($isDarkNow ? 'dark' : 'light', false);
-
-//   // Click handlers
-//   $btnDark.on('click', () => applyTheme('dark'));
-//   $btnLight.on('click', () => applyTheme('light'));
-
-//   // Optional: respond to system changes only if no saved preference
-//   const $mq = window.matchMedia('(prefers-color-scheme: dark)');
-//   $mq.addEventListener?.('change', (event) => {
-//     if (!localStorage.getItem($THEME_KEY)) applyTheme(event.matches ? 'dark' : 'light', false);
-//   });
-
-//   $(document).on("mousedown", (event) => {
-//     // Only prevent default if actually closing the sidebar, not on every click
-//     if (
-//       $drawerToggle.is(":checked") &&
-//       !$(event.target).closest($sidebar).length &&
-//       !$(event.target).is($drawerToggle) &&
-//       !$(event.target).closest($drawerToggleIcon).length
-//     ) {
-//       event.preventDefault();
-//       $drawerToggle.prop("checked", false);
-//     }
-//   });
-
-//   // Prevent scroll-to-top when clicking the sidebar toggle button (label)
-//   $drawerToggleIcon.on("click", (event) => {
-//     event.preventDefault();
-//     // Toggle the checkbox manually
-//     $drawerToggle.prop("checked", !$drawerToggle.prop("checked"));
-//   });
-
-//   // Highlight the current section in the sidebar on scroll
-//   const $sections = $("section[id]");
-//   const $links = $(".sidebar-link");
-
-//   $(window).on("scroll",  () => {
-//     const scrollTop = $(window).scrollTop();
-//     let $currentId = null;
-
-//     $sections.each((index, el) => {
-//       const $sec = $(el);
-//       const $id = el.id;
-//       const $top = $sec.offset().top;
-//       const $bottom = $top + $sec.outerHeight();
-
-//       if (
-//         // for normal sections trigger when top hits viewport top
-//         // for contactMe trigger when its bottom edge reaches the viewport bottom
-//         ($id !== "contactMe" && scrollTop >= $top && scrollTop < $bottom) ||
-//         ($id === "contactMe" && scrollTop + $(window).height() >= $bottom)
-//       ) {
-//         $currentId = $id;
-//         return false;
-//       }
-//     });
-
-//     // reset all links
-//     $links
-//       .removeClass("bg-capri text-gray-800 dark:text-gray-200 hover:bg-capri-light")
-//       .addClass("text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800")
-
-//     // highlight the one matching currentId
-//     if ($currentId) {
-//       $links
-//         .filter('[href="#' + $currentId + '"]')
-//         .removeClass("text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800")
-//         .addClass("bg-capri text-gray-800 dark:text-gray-200 hover:bg-capri-light");
-//     }
-
-//     // Show/hide the back-to-top button based on scroll position
-//     if ($(window).scrollTop() > $SHOW_AFTER) {
-//       $backToTop.removeClass('hidden').addClass('opacity-100');
-//     } else {
-//       $backToTop.addClass('hidden').removeClass('opacity-100');
-//     }
-//   });
-
-//   // trigger on load in case you’re already scrolled down
-//   $(window).trigger("scroll");
-
-//   // re-run the scroll handler whenever you click a sidebar link
-//   $(".sidebar-link").on("click",  () => {
-//     // small timeout to let the browser actually jump
-//     setTimeout(() => $(window).trigger("scroll"), 10);
-//   });
-
-//   $backToTop.on('click',  () => {
-//     $('html, body').animate({ scrollTop: 0 }, 200);
-//   })
-
-//   // Initialize AOS (Animate On Scroll)
-//   AOS.init();
-
-//   // Send mail
-//   $('#contactForm').on('submit', (event) => {
-//     event.preventDefault();
-//     const $form = $(event.currentTarget);
-//     const $sendMailBtn = $('#sendMail');
-//     $sendMailBtn.prop('disabled', true).text('Sending...');
-//     const $initialUrl = 'mail.php?name="Hacene"'; // Use a relative URL for the AJAX request
-//     let $url =  $initialUrl.split(/[?#]/)[0];
-
-//     console.log($form.serialize())
-//     $.ajax({
-//       url: $url,
-//       method: 'POST',
-//       data: $form.serialize(),
-//       dataType: 'json'
-//     }).done(function (res) {
-//       const fields = ['name', 'email', 'subject', 'message'];
-//       if (res.errors) {
-//         // Show only current errors, hide cleared ones
-//         fields.forEach(f => {
-//           const $err = $form.find(`.${f}-field .validation-err`);
-//           if (res.errors[f]) {
-//             $err.removeClass('hidden').text(res.errors[f]);
-//           } else {
-//             $err.addClass('hidden').text('');
-//           }
-//         });
-//       }
-//       else if (res.success) {
-//         // Hide all errors, show success message
-//         $(".validation-err").addClass("hidden");
-//         $(".error-icon").addClass("hidden");
-//         $(".success-icon").removeClass("hidden");
-//         $(".alert-msg").removeClass("hidden bg-red-400").addClass("bg-green-400");
-//         $(".alert-msg-text").text(res.message);
-//          alertTimer = setTimeout(() => {
-//         $(".alert-msg").addClass("hidden");
-//       }, 5000);
-//         $form[0].reset();
-//       } else if (!res.success) {
-//         $(".validation-err").addClass("hidden");
-//         $(".success-icon").addClass("hidden");
-//         $(".error-icon").removeClass("hidden");
-//         $(".alert-msg").removeClass("hidden bg-green-400").addClass("bg-red-400");
-//         $(".alert-msg-text").text(res.message);
-//          alertTimer = setTimeout(() => {
-//         $(".alert-msg").addClass("hidden");
-//       }, 5000);
-//       }
-//     }).fail( (jqXHR, textStatus, errorThrown) => {
-//       console.error("AJAX request failed:", textStatus, errorThrown);
-//       $(".alert-msg").removeClass("hidden").addClass("bg-red-400");
-//       $(".alert-msg-text").text("Something went wrong, please try again later!");
-//       alertTimer = setTimeout(() => {
-//         $(".alert-msg").addClass("hidden");
-//       }, 5000);
-//     }).always(() => {
-//       $sendMailBtn.prop('disabled', false).text('Send Message');
-//     });
-//   });
-
-// // Close alert message
-//   $(".alert-msg-close").click( (event) => {
-//     event.preventDefault();
-//     $(".alert-msg").addClass("hidden");
-//   });
-// });

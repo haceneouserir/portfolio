@@ -5,14 +5,15 @@ export default {
   theme: {
     extend: {
       screens: {
-        'xs-max': { 'max': '375px'},
+        'xs': { 'min': '400px'},
       },
       colors: {
-        capri: "#00bfff",
+        "capri": "#00bfff",
         "capri-light": "#33ccff",
       },
       animation: {
         "bounce-slow": "bounce 3s infinite;",
+        "pulse-speed": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite"
       },
       width: {
         68: "17rem",
