@@ -5,19 +5,6 @@ import "./toast"
 AOS.init();
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Cloudflare Turnstile
-  let turnstileWidgetId;
-  if (typeof turnstile !== "undefined") {
-    turnstileWidgetId = turnstile.render("#cfTurnstile", {
-      sitekey: "0x4AAAAAACLUZydBc06cgvda",
-      language: "en",
-      theme: "light",
-      // "error-callback": function (errorCode) {
-      //   console.log("Turnstile error handled:", errorCode);
-      //   return true; // suppress console warnings
-      // }
-    });
-  }
   // Theme toggles and sidebar handling
   const root = document.documentElement;
   const themeKey = "hs_theme";
@@ -165,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sendMailBtn.disabled = true;
     sendMailBtn.textContent = "Sending...";
 
-    const initialUrl = 'mail.php';
+    const initialUrl = 'contact.php';
     const url = initialUrl.split(/[?#]/)[0];
     const formData = new FormData(form);
 
@@ -183,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
           if (res.errors[f]) {
             err?.classList.remove("hidden");
             err.textContent = res.errors[f];
+            if (f === 'cf-turnstile-response') {
+              turnstile.reset(turnstileWidgetId);
+            }
           } else {
             err?.classList.add("hidden");
             err.textContent = "";
@@ -205,9 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => alertMsg?.classList.add("hidden"), 5000);
         form.reset();
-        if (typeof turnstile !== "undefined" && turnstileWidgetId !== undefined) {
-          turnstile.reset(turnstileWidgetId);
-        }
+        turnstile.reset(turnstileWidgetId);
       } else {
         const alertMsg = document.querySelector(".alert-msg");
         document.querySelectorAll(".validation-err").forEach((el) =>

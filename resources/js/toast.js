@@ -35,7 +35,7 @@
     if (wasOffline) {
       wasOffline = false;
       showToast('Back online!', '#18d26e', true);
-      // Optional: reload page if needed
+      // Reload the page to fetch fresh content
       location.reload();
     }
   });

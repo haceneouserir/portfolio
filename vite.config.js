@@ -77,11 +77,13 @@ export default defineConfig({
         cacheId: 'mihfada',
         skipWaiting: true,
         clientsClaim: true,
-        globPatterns: ['**/*.{json,js,css,png,jpg,jpeg,webp,svg,ico,ttf,br,gz}', 'index.php'],
+        globPatterns: ['**/*.{json,js,css,png,jpg,jpeg,webp,svg,ico,ttf,br,gz}'],
         globIgnores: [
+          '**/*.php',   // ignore PHP files
+          'sitemap.xml',   // ignore sitemap
           'assets/icons/*'   // ignore icons
         ],
-        navigateFallback: '/index.php',
+        navigateFallback: undefined,
         navigateFallbackDenylist: [/^\/admin-panel/, /\/assets\/files\/cvs\/.*$/],
         runtimeCaching: [
           {
@@ -120,8 +122,8 @@ export default defineConfig({
     rollupOptions: {
       treeshake: true, // ensures dead code is removed
       input: {
-        app: resolve(__dirname, "src/app.js"),
-        "app.css": resolve(__dirname, "src/app.css"),
+        app: resolve(__dirname, "resources/js/app.js"),
+        "app.css": resolve(__dirname, "resources/css/app.css"),
       },
       output: {
         entryFileNames: "js/[name].min.js",

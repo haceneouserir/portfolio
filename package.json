@@ -6,8 +6,8 @@
   "packageManager": "pnpm@10.26.0",
   "scripts": {
     "dev": "vite",
-    "watch": "vite build --watch",
-    "build": "npx tailwindcss -i ./src/tailwind_input.css -o ./src/tailwind.css && vite build"
+    "watch": "npx tailwindcss -i ./resources/css/tailwind_input.css -o ./resources/css/tailwind.css && vite build --watch",
+    "build": "npx tailwindcss -i ./resources/css/tailwind_input.css -o ./resources/css/tailwind.css && vite build"
   },
   "author": "Hacene Ouserir",
   "license": "ISC",
