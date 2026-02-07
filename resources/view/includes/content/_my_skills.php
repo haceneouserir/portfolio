@@ -1,6 +1,6 @@
 <div class="flex flex-col my-skills-content items-center justify-center w-full h-full">
   <div class="my-skills-title">
-    <h1 class="xl:text-4xl text-3xl">My Skills</h1>
+    <h2 class="xl:text-4xl text-3xl">My Skills</h2>
   </div>
   <div class="front-end-stack text-center mt-16 w-full">
     <div class="front-end-title">

@@ -1,9 +1,28 @@
+@import "tailwindcss";
+@source "../**/*.{php,html,js}";
 @import "./aos.css";
-@import "./tailwind.css";
+
+@theme {
+  /* Breakpoints (screens) */
+  --breakpoint-xs: 400px;
+
+  /* Colors */
+  --color-capri: #00bfff;
+  --color-capri-light: #33ccff;
+
+  /* Spacing scale */
+  --spacing-68: 17rem;
+  --spacing-80: 20rem;
+  --spacing-125: 31.25rem;
+
+  /* Animations */
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-pulse-speed: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 
 @font-face {
-  font-family: 'Roboto';
-  src: url("./fonts/roboto_semibold.ttf") format('truetype');
+  font-family: "Roboto";
+  src: url("./fonts/roboto_semibold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
@@ -16,6 +35,8 @@ html {
   font-variation-settings: "wdth" 100;
   color: #1f2937;
 }
+
+/* Animated border for work domain title */
 .animated-border {
   position: absolute;
   inset: 0;
@@ -26,7 +47,9 @@ html {
   animation: spin 3s linear infinite;
 }
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fade-in {
@@ -42,30 +65,24 @@ html {
   animation: fade-in 1s ease-in-out forwards;
 }
 
+/* Palestine border */
 .pal-border {
-  /* Make the gradient only show in the border area */
-  border: 5px solid transparent;        
-  border-radius: 9999px;              
-  background:
-    conic-gradient(
-      #ff0000 0 90deg,
-      #000000 90deg 180deg,
-      #ffffff 180deg 270deg,
-      #008000 270deg 360deg
-    ) border-box;
+  border: 5px solid transparent;
+  border-radius: 9999px;
+  background: conic-gradient(#ff0000 0 90deg, #000000 90deg 180deg, #ffffff 180deg 270deg, #008000 270deg 360deg) border-box;
 }
 
 /* Toast notification */
 #toastNotif {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}

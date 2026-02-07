@@ -1,3 +1,4 @@
+import "../css/app.css";
 import AOS from "aos";
 import "./toast"
 

@@ -1,8 +1,8 @@
 <div class="flex flex-col bio-content items-center justify-center w-full h-full">
   <div class="about-me text-center">
     <div class="bio-title">
-      <h1 class="xl:text-4xl text-3xl">Bio</h1>
-      <h2 class="xl:text-2xl text-xl mt-16 text-capri">Who am I?</h2>
+      <h2 class="xl:text-4xl text-3xl">Bio</h2>
+      <h3 class="xl:text-2xl text-xl mt-16 text-capri">Who am I?</h3>
     </div>
     <div class="bio-desc mt-4">
       <q class="text-md">I'm Hacene Ouserir, 27 years old, I like IT and the economy in general, and I love web development and entrepreneurship in particular, I spend most of my time working, learning new skills, reading, and running, I live in Ouled Slama city, Blida province, Algeria.</q>

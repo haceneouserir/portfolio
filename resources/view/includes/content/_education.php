@@ -1,6 +1,6 @@
 <div class="flex flex-col edu-content items-center justify-center w-full h-full">
   <div class="edu-title">
-    <h1 class="xl:text-4xl text-3xl">Education</h1>
+    <h2 class="xl:text-4xl text-3xl">Education</h2>
   </div>
   <div class="edu-desc mt-8 sm:pl-32 pl-8 w-full">
     <div class="diplomas">

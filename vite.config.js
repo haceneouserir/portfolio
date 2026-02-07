@@ -1,12 +1,12 @@
 import { defineConfig } from "vite"
-import tailwindcss from "tailwindcss"
-import autoprefixer from "autoprefixer"
 import { resolve } from "path"
 import { VitePWA } from 'vite-plugin-pwa';
 import { compression } from 'vite-plugin-compression2'
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     // visualizer({
     //   filename: "bundle-report.html", // file saved in dist
     //   template: "treemap",            // "sunburst", "network", "treemap"
@@ -18,11 +18,11 @@ export default defineConfig({
       filename: "sw.js",
       manifestFilename: "manifest.json",
       manifest: {
-        name: 'Mihfada',
-        short_name: 'Mihfada',
+        name: 'HO Portfolio',
+        short_name: 'HO',
         start_url: '/',
         display: 'standalone',
-        description: 'A starter portfolio for you!',
+        description: "Hacene Ouserir's portfolio.",
         lang: 'en',
         direction: 'ltr',
         theme_color: '#00bfff',
@@ -74,7 +74,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        cacheId: 'mihfada',
+        cacheId: 'ho',
         skipWaiting: true,
         clientsClaim: true,
         globPatterns: ['**/*.{json,js,css,png,jpg,jpeg,webp,svg,ico,ttf,br,gz}'],
@@ -90,7 +90,7 @@ export default defineConfig({
             urlPattern: /^https?.*/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'mihfada-dynamic',
+              cacheName: 'ho-dynamic',
               networkTimeoutSeconds: 10,
             }
           }
@@ -108,14 +108,8 @@ export default defineConfig({
       ]
     })
   ],
-  css: {
-    postcss: {
-      plugins: [
-        tailwindcss(),      // process your @tailwind rules
-        autoprefixer(),    // add vendor prefixes
-      ],
-    },
-  },
+  // css: {
+  // },
   build: {
     outDir: "public",
     emptyOutDir: false,
@@ -123,7 +117,6 @@ export default defineConfig({
       treeshake: true, // ensures dead code is removed
       input: {
         app: resolve(__dirname, "resources/js/app.js"),
-        "app.css": resolve(__dirname, "resources/css/app.css"),
       },
       output: {
         entryFileNames: "js/[name].min.js",

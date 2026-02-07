@@ -1,27 +1,21 @@
-<?php
-if (empty($_SESSION['csrf_token'])) {
-  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hacene Ouserir's portfolio showcases web development skills, experience, latest projects, and blog posts. Available for collaboration and consultation.">
+  <meta name="description" content="Hacene Ouserir is a web developer specializing in modern websites and web applications. Explore his portfolio, latest projects, technical blog posts, and professional experience. Available for freelance work, collaboration, and consultations.">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="canonical" href="https://www.haceneouserir.me">
   <!-- Open Graph -->
   <meta property="og:title" content="Hacene Ouserir | Portfolio">
-  <meta property="og:description" content="Hacene Ouserir's portfolio showcases web development skills, experience, latest projects, and blog posts. Available for collaboration and consultation.">
+  <meta property="og:description" content="Hacene Ouserir is a web developer specializing in modern websites and web applications. Explore his portfolio, latest projects, technical blog posts, and professional experience. Available for freelance work, collaboration, and consultations.">
   <meta property="og:image" content="https://www.haceneouserir.me/assets/icons/icon_512x512.png">
   <meta property="og:url" content="https://www.haceneouserir.me">
   <meta property="og:type" content="website">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hacene Ouserir | Portfolio">
-  <meta name="twitter:description" content="Hacene Ouserir's portfolio showcases web development skills, experience, latest projects, and blog posts. Available for collaboration and consultation.">
+  <meta name="twitter:description" content="Hacene Ouserir is a web developer specializing in modern websites and web applications. Explore his portfolio, latest projects, technical blog posts, and professional experience. Available for freelance work, collaboration, and consultations.">
   <meta name="twitter:image" content="https://www.haceneouserir.me/assets/icons/icon_512x512.png">
 
   <title>Hacene Ouserir | Portfolio</title>

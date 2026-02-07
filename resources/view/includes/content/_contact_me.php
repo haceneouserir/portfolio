@@ -1,6 +1,6 @@
 <div class="flex flex-col contact-me-content items-center justify-center w-full h-full">
   <div class="contact-me-title">
-    <h1 class="xl:text-4xl text-3xl">Contact Me</h1>
+    <h2 class="xl:text-4xl text-3xl">Contact Me</h2>
   </div>
   <div class="contact-me-desc mt-16 w-full">
     <p class="xl:text-xl text-lg text-capri text-center">Please, Contact me via:</p>
