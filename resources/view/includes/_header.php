@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +20,6 @@
   <meta name="twitter:image" content="https://www.haceneouserir.me/assets/icons/icon_512x512.png">
 
   <title>Hacene Ouserir | Portfolio</title>
-  <!-- App CSS -->
-  <link rel="stylesheet" href="/css/app.min.css">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <!-- Apple Touch Icons -->
@@ -31,12 +30,12 @@
   <link rel="manifest" href="/manifest.json">
   <!-- Apply theme ASAP to prevent flash -->
   <script async>
-    const $root = document.documentElement;
-    const $key = 'hs_theme';
-    let $saved = localStorage.getItem($key);
-    const $prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let $isDark = $saved ? $saved === 'dark' : $prefersDark;
-    $root.classList.toggle('dark', $isDark);
+    const root = document.documentElement;
+    const key = 'light_dark_mode';
+    let saved = localStorage.getItem(key);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let isDark = saved ? saved === 'dark' : prefersDark;
+    root.classList.toggle('dark', isDark);
   </script>
   <!-- Preconnect to Cloudflare Turnstile -->
   <link rel="preconnect" href="https://challenges.cloudflare.com">
@@ -63,4 +62,6 @@
       renderTurnstile();
     });
   </script>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/css/app.min.css">
 </head>

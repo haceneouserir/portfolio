@@ -8,7 +8,7 @@ AOS.init();
 document.addEventListener("DOMContentLoaded", () => {
   // Theme toggles and sidebar handling
   const root = document.documentElement;
-  const themeKey = "hs_theme";
+  const themeKey = "light_dark_mode";
   const btnDark = document.getElementById("btnDark");
   const btnLight = document.getElementById("btnLight");
   const drawerToggle = document.getElementById("drawerToggle");

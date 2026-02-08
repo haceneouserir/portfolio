@@ -8,12 +8,12 @@
         <path d="M3 19H21" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
 </label>
-<aside class="xs:w-80 w-68 h-screen px-4 py-8 overflow-y-auto bg-white border-r dark:bg-gray-900 dark:border-gray-700 lg:block fixed lg:sticky top-0 left-0 z-20 transition-all duration-500 transform lg:-translate-x-0 -translate-x-full peer-checked:translate-x-0">
+<aside class="w-68 xs:w-80 lg:w-full h-screen px-4 py-8 overflow-y-auto bg-white border-r dark:bg-gray-900 dark:border-gray-700 lg:block fixed lg:sticky top-0 left-0 z-20 transition-all duration-500 transform lg:translate-x-0 -translate-x-full peer-checked:translate-x-0">
     <div class="theme-toggle absolute top-4 right-4">
-        <button id="btnDark" class="hidden focus:outline-hidden" aria-label="Light mode">
+        <button id="btnDark" class="hidden focus:outline-none cursor-pointer" aria-label="Light mode">
                 <svg class="stroke-gray-500 hover:stroke-gray-400 transition ease-in-out delay-75 duration-300" width="30px" height="30px" stroke-width="1" viewBox="0 0 24 24" fill="#6b7280" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         </button>
-        <button id="btnLight" class="hidden focus:outline-hidden" aria-label="Dark mode">
+        <button id="btnLight" class="hidden focus:outline-none cursor-pointer" aria-label="Dark mode">
                <svg class="stroke-yellow-500 hover:stroke-yellow-400 transition ease-in-out delay-75 duration-300" width="30px" height="30px" stroke-width="1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         </button>
     </div>

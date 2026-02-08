@@ -1,24 +1,8 @@
-@import "tailwindcss";
-@source "../**/*.{php,html,js}";
+
 @import "./aos.css";
-
-@theme {
-  /* Breakpoints (screens) */
-  --breakpoint-xs: 400px;
-
-  /* Colors */
-  --color-capri: #00bfff;
-  --color-capri-light: #33ccff;
-
-  /* Spacing scale */
-  --spacing-68: 17rem;
-  --spacing-80: 20rem;
-  --spacing-125: 31.25rem;
-
-  /* Animations */
-  --animate-bounce-slow: bounce 3s infinite;
-  --animate-pulse-speed: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: "Roboto";

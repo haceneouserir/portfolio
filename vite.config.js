@@ -2,11 +2,9 @@ import { defineConfig } from "vite"
 import { resolve } from "path"
 import { VitePWA } from 'vite-plugin-pwa';
 import { compression } from 'vite-plugin-compression2'
-import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
     // visualizer({
     //   filename: "bundle-report.html", // file saved in dist
     //   template: "treemap",            // "sunburst", "network", "treemap"

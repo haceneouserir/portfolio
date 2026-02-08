@@ -35,7 +35,7 @@
       <!-- Back to top button -->
       <button
         id="backToTop"
-        class="hidden z-[99999] fixed bottom-8 right-4 p-4 bg-capri hover:bg-capri-light transition ease-in-out delay-75 duration-300 rounded-full"
+        class="hidden z-99999 fixed bottom-8 right-4 p-4 bg-capri hover:bg-capri-light transition ease-in-out delay-75 duration-300 rounded-full"
         aria-label="Back to top">
         <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
           <path d="M12 17V13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
