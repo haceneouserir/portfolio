@@ -1,6 +1,6 @@
   <div id="toastNotif"></div>
   <!-- App JS -->
-  <script src="/js/app.min.js" type="module" aync></script>
+  <script src="/js/app.min.js" type="module" defer></script>
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {

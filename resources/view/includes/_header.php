@@ -64,4 +64,20 @@
   </script>
   <!-- App CSS -->
   <link rel="stylesheet" href="/css/app.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $_ENV["GA_MEASUREMENT_ID"] ?? ""; ?>"></script>
+  <script>
+    // Check if we're in development mode (localhost or .test domain)
+    const hostname = window.location.hostname;
+    const isDev = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.test');
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    if (!isDev) {
+      gtag('config', '<?php echo $_ENV["GA_MEASUREMENT_ID"] ?? ""; ?>');
+    }
+  </script>
 </head>
